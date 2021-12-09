@@ -67,6 +67,50 @@ export default function Home() {
                 <p>Cloudiness: {data.clouds.all}%</p>
               </div>
             </div>
+            <div className = {styles.forecastContainer}>
+              <div className = {styles.forecastCard}>
+                <h2>Wind</h2>
+                <p>Wind degree: {data.wind.deg} &deg;</p>
+                <p>Wind gust: {data.wind.gust}</p>
+                <p>Wind speed: {data.wind.speed} km/h</p>
+              </div>
+              <div className = {styles.forecastCard}>
+                <h2>Wind</h2>
+                <p>Wind degree: {data.wind.deg} &deg;</p>
+                <p>Wind gust: {data.wind.gust}</p>
+                <p>Wind speed: {data.wind.speed} km/h</p>
+              </div>
+              <div className = {styles.forecastCard}>
+                <h2>Wind</h2>
+                <p>Wind degree: {data.wind.deg} &deg;</p>
+                <p>Wind gust: {data.wind.gust}</p>
+                <p>Wind speed: {data.wind.speed} km/h</p>
+              </div>
+              <div className = {styles.forecastCard}>
+                <h2>Wind</h2>
+                <p>Wind degree: {data.wind.deg} &deg;</p>
+                <p>Wind gust: {data.wind.gust}</p>
+                <p>Wind speed: {data.wind.speed} km/h</p>
+              </div>
+              <div className = {styles.forecastCard}>
+                <h2>Wind</h2>
+                <p>Wind degree: {data.wind.deg} &deg;</p>
+                <p>Wind gust: {data.wind.gust}</p>
+                <p>Wind speed: {data.wind.speed} km/h</p>
+              </div>
+              <div className = {styles.forecastCard}>
+                <h2>Wind</h2>
+                <p>Wind degree: {data.wind.deg} &deg;</p>
+                <p>Wind gust: {data.wind.gust}</p>
+                <p>Wind speed: {data.wind.speed} km/h</p>
+              </div>
+              <div className = {styles.forecastCard}>
+                <h2>Wind</h2>
+                <p>Wind degree: {data.wind.deg} &deg;</p>
+                <p>Wind gust: {data.wind.gust}</p>
+                <p>Wind speed: {data.wind.speed} km/h</p>
+              </div>
+            </div>
           </>
         }
       </div>

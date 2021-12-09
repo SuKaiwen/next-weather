@@ -9,6 +9,7 @@
   flex-direction: column;
   align-items: center;
   line-height: 80%;
+  overflow:hidden;
 }
 
 .main {
@@ -135,6 +136,27 @@
   background-color: rgba(255, 255, 255, .10);  
   backdrop-filter: blur(5px);
  }
+
+ .forecastCard {
+  width: 15%;
+  background-color: rgba(255, 255, 255, .10);  
+  backdrop-filter: blur(5px);
+  padding: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+  min-width: 100px;
+ }
+
+ .forecastContainer {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  overflow:auto;
+ }
+
+ .element::-webkit-scrollbar { width: 0 !important }
 
  @media (width < 600px) {
    .contentContainer{
