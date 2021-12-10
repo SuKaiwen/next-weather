@@ -55,14 +55,20 @@ export default function Home() {
       </Head>
       <div className = {styles.container}>
         <form onSubmit={onSubmit}>
-          <label>
-            <h4>Search for a city</h4>
-            <input type="text" value={term} onChange={e => setTerm(e.target.value)} />
-          </label>
-          <input type="submit" value="Submit" />
+          <div className={styles.inputWrapper}>
+            <input className = {styles.input}
+              type = "text"
+              onChange = {e => setTerm(e.target.value)}
+              placeholder='Search for a country...'
+              value={term}
+              />
+            <span className={styles.inputHighlight}>
+              { term.replace(/ /g, "\u00a0") }
+            </span>
+          </div>
         </form>
+        
         <h1>Weather Data</h1>
-        <p>{term}</p>
         {dataFound && forecastFound &&
           <> 
             <h2>{data.name}, {data.sys.country}</h2>
