@@ -14,20 +14,28 @@ export default function Home() {
 
   const [dailyForecast, setDailyForeCast] = useState();
 
+  const [term, setTerm] = useState('Sydney');
+
+  const [terms, setTerms] = useState('Sydney');
+
   useEffect(() => {
-    getWeather();
-    getForecast();
-  }, [])
+    getNewData();
+  }, []);
+
+  useEffect(() => {
+    console.log(terms);
+    getNewData();
+  }, [terms]);
 
   const getWeather = async () => {
-    const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=Sydney&APPID=${API_KEY}`)
+    const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${terms}&APPID=${API_KEY}`)
       .then(response => response.json())
       .then(resData => {console.log(resData); setData(resData); setDataFound(true);})
       .catch(err => alert("Weather not found"))
   }
 
   const getForecast = async () => {
-    const forecast_call = await fetch(`http://api.openweathermap.org/data/2.5/forecast?q=Sydney&appid=${API_KEY}`)
+    const forecast_call = await fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${terms}&appid=${API_KEY}`)
       .then(response => response.json())
       .then(resData => {console.log(resData); 
                         setForecast([resData.list[0]].concat([resData.list[8]]).concat([resData.list[16]]).concat([resData.list[24]]).concat([resData.list[32]])); 
@@ -36,7 +44,10 @@ export default function Home() {
       .catch(err => alert("Forecast not found"))
   }
 
-
+  const getNewData = () => {
+    getWeather();
+    getForecast();
+  }
 
   return (
     <div>
@@ -44,7 +55,15 @@ export default function Home() {
         <title>Next Weathers</title>
       </Head>
       <div className = {styles.container}>
+        <form onSubmit={e => setTerms(term)}>
+          <label>
+            Name:
+            <input type="text" value={term} onChange={e => setTerm(e.target.value)} />
+          </label>
+          <input type="submit" value="Submit" />
+        </form>
         <h1>Weather Data</h1>
+        <p>{term}</p>
         {dataFound && forecastFound &&
           <> 
             <h2>{data.name}, {data.sys.country}</h2>
@@ -101,15 +120,5 @@ export default function Home() {
         }
       </div>
     </div>
-  )
-}
-
-function minmaxTemp(min, max){
-  return(
-    <div>
-      <h3>Min temp: {min}&deg</h3>
-      <h3>Max temp: {max}&deg</h3>
-    </div>
-    
   )
 }
