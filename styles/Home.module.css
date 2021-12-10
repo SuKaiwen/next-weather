@@ -8,8 +8,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  line-height: 80%;
   overflow:hidden;
+  background-repeat: no-repeat;
+  background-color: #0f1221;
 }
 
 .main {
@@ -138,6 +139,34 @@
  }
 
  .forecastCard {
+  width: 20%;
+  background-color: rgba(255, 255, 255, .10);  
+  backdrop-filter: blur(5px);
+  padding: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+  min-width: 150px;
+ }
+
+ .forecastContainer {
+  margin-top: 20px;
+  margin-bottom: 50px;
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  overflow:auto;
+ }
+
+ .summaryContainer{
+   margin-top: 20px;
+   margin-bottom: 30px;
+   width: 90%;
+  display: flex;
+  flex-direction: row;
+  overflow:auto;
+ }
+
+ .summaryCard{
   width: 15%;
   background-color: rgba(255, 255, 255, .10);  
   backdrop-filter: blur(5px);
@@ -147,13 +176,14 @@
   min-width: 100px;
  }
 
- .forecastContainer {
-  margin-top: 50px;
-  margin-bottom: 50px;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  overflow:auto;
+ .titleContainer{
+   margin-top: 20px;
+   text-align: left !important;
+   width: 89%;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: space-between;
  }
 
  .element::-webkit-scrollbar { width: 0 !important }
