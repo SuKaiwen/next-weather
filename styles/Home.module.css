@@ -199,3 +199,11 @@
      margin-bottom: 20px;
    }
  }
+
+ .form {
+   min-height: 100px;
+ }
+
+ .input {
+   min-height: 100px;
+ }

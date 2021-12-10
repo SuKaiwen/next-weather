@@ -16,26 +16,19 @@ export default function Home() {
 
   const [term, setTerm] = useState('Sydney');
 
-  const [terms, setTerms] = useState('Sydney');
-
   useEffect(() => {
-    getNewData();
+    getNewData(term);
   }, []);
 
-  useEffect(() => {
-    console.log(terms);
-    getNewData();
-  }, [terms]);
-
-  const getWeather = async () => {
-    const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${terms}&APPID=${API_KEY}`)
+  const getWeather = async (city) => {
+    const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${API_KEY}`)
       .then(response => response.json())
       .then(resData => {console.log(resData); setData(resData); setDataFound(true);})
       .catch(err => alert("Weather not found"))
   }
 
-  const getForecast = async () => {
-    const forecast_call = await fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${terms}&appid=${API_KEY}`)
+  const getForecast = async (city) => {
+    const forecast_call = await fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}`)
       .then(response => response.json())
       .then(resData => {console.log(resData); 
                         setForecast([resData.list[0]].concat([resData.list[8]]).concat([resData.list[16]]).concat([resData.list[24]]).concat([resData.list[32]])); 
@@ -44,9 +37,15 @@ export default function Home() {
       .catch(err => alert("Forecast not found"))
   }
 
-  const getNewData = () => {
-    getWeather();
-    getForecast();
+  const getNewData = (city) => {
+    getWeather(city);
+    getForecast(city);
+  }
+
+  const onSubmit = () => {
+    event.preventDefault();
+    console.log(term);
+    getNewData(term);
   }
 
   return (
@@ -55,9 +54,9 @@ export default function Home() {
         <title>Next Weathers</title>
       </Head>
       <div className = {styles.container}>
-        <form onSubmit={e => setTerms(term)}>
+        <form onSubmit={onSubmit}>
           <label>
-            Name:
+            <h4>Search for a city</h4>
             <input type="text" value={term} onChange={e => setTerm(e.target.value)} />
           </label>
           <input type="submit" value="Submit" />
