@@ -2,7 +2,6 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import React, {useState, useEffect} from 'react';
 
-const API_KEY = "b215e5e049c4b3b9b050f1f3581e694e";
 
 export default function Home() {
 
@@ -21,14 +20,14 @@ export default function Home() {
   }, []);
 
   const getWeather = async (city) => {
-    const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${API_KEY}`)
+    const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}`)
       .then(response => response.json())
       .then(resData => {console.log(resData); setData(resData); setDataFound(true);})
       .catch(err => alert("Weather not found"))
   }
 
   const getForecast = async (city) => {
-    const forecast_call = await fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}`)
+    const forecast_call = await fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}`)
       .then(response => response.json())
       .then(resData => {console.log(resData); 
                         setForecast([resData.list[0]].concat([resData.list[8]]).concat([resData.list[16]]).concat([resData.list[24]]).concat([resData.list[32]])); 
@@ -59,7 +58,7 @@ export default function Home() {
             <input className = {styles.input}
               type = "text"
               onChange = {e => setTerm(e.target.value)}
-              placeholder='Search for a country...'
+              placeholder='Search for a country'
               value={term}
               />
             <span className={styles.inputHighlight}>
@@ -127,3 +126,16 @@ export default function Home() {
     </div>
   )
 }
+
+export async function getServerSideProps(){
+
+  console.log(process.env.NEXT_PUBLIC_WEATHER_API_KEY);
+
+  return {
+    props: {
+      hello: 'world'
+    }
+  }
+}
+
+
