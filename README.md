@@ -1,3 +1,9 @@
+How to view:
+- clone my repo
+- open terminal and go to this repo
+- npm run dev
+- open browser and go to localhost:3000
+
 Basic page created:
 
 ![image](https://user-images.githubusercontent.com/56058518/145500239-17961b30-d022-4e74-826b-d4b0ce5aab38.png)
