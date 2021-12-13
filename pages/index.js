@@ -128,9 +128,6 @@ export default function Home() {
 }
 
 export async function getServerSideProps(){
-
-  console.log(process.env.NEXT_PUBLIC_WEATHER_API_KEY);
-
   return {
     props: {
       hello: 'world'
