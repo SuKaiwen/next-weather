@@ -1,3 +1,5 @@
+Next-Weather is a weather application create in NEXT JS that displays current weather data such as temperature/windspeeds as well as hourly/weekly forecasts for various cities around the world.
+
 How to view:
 - clone my repo
 - open terminal and go to this repo
